@@ -1,26 +1,100 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-navy: #0A0F1E;
+  --color-surface: #141926;
+  --color-white: #F8FAFC;
+  --color-accent: #00C896;
+  --color-violet: #7C5CFC;
+  --color-amber: #F59E0B;
+  --color-error: #EF4444;
+  --color-muted: #64748B;
+  --color-glass: rgba(255, 255, 255, 0.08);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-navy: #0A0F1E;
+  --color-surface: #141926;
+  --color-soft-white: #F8FAFC;
+  --color-accent: #00C896;
+  --color-violet: #7C5CFC;
+  --color-amber: #F59E0B;
+  --color-error: #EF4444;
+  --color-muted: #64748B;
+  --font-sans: var(--font-dm-sans);
+  --font-mono: var(--font-jetbrains-mono);
+  --font-serif: var(--font-noto-serif);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-navy);
+  color: var(--color-white);
+  font-family: var(--font-sans), 'DM Sans', Arial, sans-serif;
+  min-height: 100vh;
+}
+
+/* Glass card effect */
+.glass-card {
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #141926;
+}
+::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #64748B;
+}
+
+/* Financial table mono font */
+.font-mono-data {
+  font-family: var(--font-jetbrains-mono), 'JetBrains Mono', monospace;
+}
+
+/* German narrative serif */
+.font-german {
+  font-family: var(--font-noto-serif), 'Noto Serif', Georgia, serif;
+}
+
+/* Animated gradient border */
+@keyframes gradient-border {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Pulse animation for status badges */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Light mode */
+.light-mode body {
+  background: #F8FAFC;
+  color: #0A0F1E;
+}
+
+.light-mode .glass-card {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.08);
 }
